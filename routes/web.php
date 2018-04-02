@@ -80,3 +80,9 @@ Route::get('/', function () {
 	$items = ['apple', 'banana', 'tomato'];
 	return view('welcome', ['items' => $items]);
 });
+
+// 8-1
+Route::get('/', 'WelcomeController@index');
+
+// 8-3
+Route::resource('articles', 'ArticlesController');

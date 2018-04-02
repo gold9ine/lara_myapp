@@ -18,6 +18,20 @@
 	{{--블레이드 주석 안에서 {{ $name }} 을(를) 출력합니다. --}}
 	<h1>Hi Hello Anyong !! Foo</h1>
 
+	@if($itemCount = count($items))
+		<p>{{ $itemCount }} 종류의 과일이 있습니다. </p>
+	@else
+		<p>is there nothing !! </p>
+	@endif
+
+	<ul>
+	@forelse($items as $item)
+		<li>{{ $item }}</li>
+	@empty
+		<li>is there nothing !!!! </li>
+	@endforelse
+	<ul>
+
 	@extends('layouts.master')
 
 	@section('style')
