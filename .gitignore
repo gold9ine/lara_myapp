@@ -11,3 +11,8 @@ npm-debug.log
 yarn-error.log
 .env
 
+build
+*~
+.DS_Store
+.gitignore
+UserInterfaceState.xcuserstate
