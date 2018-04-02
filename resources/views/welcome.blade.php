@@ -13,6 +13,43 @@
 </head>
 <body>
 	<h1>Hello World !!</h1>
-	<h1><?= isset($greeting) ? "{$greeting} " : 'Hello ' ; ?> <?= $name; ?></h1>
+	<!-- <h1>{{ $greeting or 'Hello '}} {{ $name or '' }}</h1> -->
+	<!-- HTML 주석 안에서 Foo를(을) 출력합니다. -->
+	{{--블레이드 주석 안에서 {{ $name }} 을(를) 출력합니다. --}}
+	<h1>Hi Hello Anyong !! Foo</h1>
+
+	@if($itemCount = count($items))
+		<p>{{ $itemCount }} 종류의 과일이 있습니다. </p>
+	@else
+		<p>is there nothing !! </p>
+	@endif
+
+	<ul>
+	@forelse($items as $item)
+		<li>{{ $item }}</li>
+	@empty
+		<li>is there nothing !!!! </li>
+	@endforelse
+	<ul>
+
+	@extends('layouts.master')
+
+	@section('style')
+	<style>
+		body {background: green; color: white;}
+	</style>
+	@endsection
+
+	@section('content')
+		@include('partials.footer')
+		<p>Im 'content' section of Child view</p>
+	@endsection
+
+	@section('script')
+		<script>
+			// alert("Im 'script' section of Child view !!");
+		</script>
+		<p>Im 'script' section of Child view !!</p>
+	@endsection
 </body>
 </html>

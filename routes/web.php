@@ -74,3 +74,9 @@ Route::get('/', function () {
 		'greeting' => 'Hello ??',
 	]);
 });
+
+// 5-5
+Route::get('/', function () {
+	$items = ['apple', 'banana', 'tomato'];
+	return view('welcome', ['items' => $items]);
+});
