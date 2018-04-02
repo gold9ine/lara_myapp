@@ -12,6 +12,48 @@
 */
 
 // Base
+
+// 3-2
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
+
+// 3-3
+Route::get('/', function () {
+	return '<h1>Hello Foo</h1>';
+});
+
+// 3-4
+Route::get('/{foo}', function ($foo) {
+	return $foo;
+});
+
+// 3-5
+// /{foo}/profile 가능
+// /?foo=bar
+Route::get('/{foo?}', function ($foo = 'bar') {
+	return $foo;
+});
+
+// 3-6
+Route::pattern('foo', '[0-9a-zA-Z]{3}');
+Route::get('/{foo?}', function ($foo = 'bar') {
+	return $foo;
+});
+
+// 3-7
+Route::get('/{foo?}', function ($foo = 'bar') {
+	return $foo;
+})->where('foo', '[0-9a-zA-Z]{3}');
+
+// 3-8
+Route::get('/', [
+	'as' => 'home_r',
+	function () {
+		return 'My name is "home" !!';
+	}
+]);
+Route::get('/home_22', function () {
+	return redirect(route('home_r'));
+});
+
