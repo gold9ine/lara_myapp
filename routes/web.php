@@ -127,3 +127,6 @@ Route::resource('articles', 'ArticlesController');
 // 	// var_dump($query->sql);
 // 	dump($query->sql);
 // });
+
+// 13-1
+Route::resource('articles', 'ArticlesController');
