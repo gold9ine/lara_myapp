@@ -113,6 +113,17 @@ Route::get('auth/logout', function () {
 	auth()->logout();
 	return 'see you again !!';
 });
+
+// 9-2 라라벨 내장 사용자 인증
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// 12-1
+Route::resource('articles', 'ArticlesController');
+
+// 12-4
+// DB::listen(function ($query){
+// 	// var_dump($query->sql);
+// 	dump($query->sql);
+// });
