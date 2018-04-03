@@ -86,3 +86,33 @@ Route::get('/', 'WelcomeController@index');
 
 // 8-3
 Route::resource('articles', 'ArticlesController');
+
+// 9-3
+Route::get('/', 'WelcomeController@index');
+Route::get('auth/login', function () {
+	$credentials = [
+		'email' => 'john@example.com',
+		'password' => 'password'
+	];
+	if (! auth()->attempt($credentials, true)) {
+		return 'login info not correct';
+	}
+	return redirect('protected');
+});
+// Route::get('protected', function () {
+// 	dump(session()->all());
+// 	if (! auth()->check()) {
+// 		return 'who are you?';
+// 	}
+// 	return 'welcome' . auth()->user()->name;
+// });
+Route::get('protected', ['middleware' => 'auth', function () {
+	return 'welcome !!';
+}]);
+Route::get('auth/logout', function () {
+	auth()->logout();
+	return 'see you again !!';
+});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
