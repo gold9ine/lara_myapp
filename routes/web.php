@@ -130,3 +130,13 @@ Route::resource('articles', 'ArticlesController');
 
 // 13-1
 Route::resource('articles', 'ArticlesController');
+
+// 14-2
+// Event 파사드에 listen(string|array $events, mixed $listener) 메서드
+// Event::listen('이벤트_이름', '처리_로직');
+// Event::listen('article.created', function ($article) {
+// 	echo("<pre>");
+// 	var_dump('이벤트를 받았습니다. 받은 데이터(상태)는 다음과 같습니다._web');
+// 	var_dump($article->toArray());
+// 	echo("</pre>");
+// });

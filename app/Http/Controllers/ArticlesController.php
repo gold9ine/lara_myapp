@@ -54,6 +54,7 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
 
+    // public function store(\App\Http\Requests\ArticlesRequest $request)
     public function store(ArticlesRequest $request)
     {
        //  $rules = [
@@ -84,7 +85,10 @@ class ArticlesController extends Controller
         }
 
         // var_dump('이벤트를 던집니다.');
-        // event('article.create', [$article]);
+        // event('이벤트_이름, 이벤트_데이터');
+        // event('article.created', [$article]);
+        // event(new \App\Events\ArticleCreated($article));
+        event(new \App\Events\ArticlesEvent($article));
         // var_dump('이벤트를 던졌습니다.');
 
         return redirect(route('articles.index'))->with('flash_message', '작성하신 글이 저장되었습니다.');
