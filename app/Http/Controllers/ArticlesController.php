@@ -45,7 +45,7 @@ class ArticlesController extends Controller
         // $articles->load('user');
 
         $articles = \App\Article::latest()->paginate(3);
-
+        // dd(view('articles.index', compact('articles'))->render());
         return view('articles.index', compact('articles'));
     }
 
@@ -92,5 +92,12 @@ class ArticlesController extends Controller
         // var_dump('이벤트를 던졌습니다.');
 
         return redirect(route('articles.index'))->with('flash_message', '작성하신 글이 저장되었습니다.');
+    }
+
+    public function show($id)
+    {
+        $article = \App\Article::findOrFail($id);
+        // dd($article);
+        return $article->toArray();
     }
 }
