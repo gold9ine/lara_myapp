@@ -140,3 +140,49 @@ Route::resource('articles', 'ArticlesController');
 // 	var_dump($article->toArray());
 // 	echo("</pre>");
 // });
+
+// 16-3
+Route::get('mail', function () {
+	$article = App\Article::with('user')->find(1);
+
+	return Mail::send(
+		'emails.articles.created',
+		compact('article'),
+		function ($message) use ($article) {
+			$message->to('your@jiran.com');
+			$message->subject('새 글이 등록되었습니다 - ' . $article->title);
+		}
+	);
+});
+
+// 16-6
+Route::get('mail', function () {
+	$article = App\Article::with('user')->find(1);
+	return Mail::send(
+		'emails.articles.created',
+		compact('article'),
+		function ($message) use ($article) {
+			// $message->from('your@gmail.com', 'fromyong');
+			// $message->to(['your@naver.com', 'your@hanmail.net']);
+			$message->to('your@jiran.com');
+			$message->subject('새 글이 등록되었습니다. - ', $article->title);
+			// $message->cc('your@daum.com');
+			// $message->attach(storage_path('framework/testing/lara.png'));
+		}
+	);
+});
+
+// 16-7
+Route::get('mail', function () {
+	$article = App\Article::with('user')->find(1);
+
+	return Mail::send(
+		// 'emails.articles.created',
+		['text' => 'emails.articles.created-text'],
+		compact('article'),
+		function ($message) use ($article) {
+			$message->to('your@jiran.com');
+			$message->subject('새 글이 등록되었습니다 - ' . $article->title);
+		}
+	);
+});
