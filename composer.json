@@ -6,6 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "barryvdh/laravel-debugbar": "2.4.*",
+        "erusev/parsedown-extra": " ~0.7.1",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "laravel/framework": "5.5.*",

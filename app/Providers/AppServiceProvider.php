@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+    	Schema::defaultStringLength(191);
     }
 
     /**
@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+    	if ($this->app->environment('local')) {
+    		$this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+    	}
     }
 }
